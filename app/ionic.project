@@ -1,0 +1,11 @@
+{
+  "name": "网址导航",
+  "app_id": "MGiTAPPG201512",
+  "browsers": [
+    {
+      "platform": "android",
+      "browser": "crosswalk",
+      "version": "12.41.296.5"
+    }
+  ]
+}

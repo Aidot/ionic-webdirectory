@@ -1,0 +1,20 @@
+<div id="login-page" class="container" ng-controller="LoginCtrl">
+  <div class="box" style="width:320px;margin: 32px auto;">
+    <form ng-submit="onLogin()">
+      <fieldset>
+        <legend>Please sign in</legend>
+        <div class="form-group">
+          <label for="inputUser" class="control-label">User Name</label>
+           <input class="form-control" type="text" ng-model="login.username" required>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword" class="control-label">Password</label>
+          <input class="form-control" type="password" ng-model="login.password" required>
+        </div>
+        <div class="form-group">
+           <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div> <!-- /container -->

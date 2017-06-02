@@ -1,0 +1,69 @@
+<div class="center-block" style="margin: 0 20%">
+  <div class="col-md-12">
+    <h3>Add New Site</h3>
+    <hr>
+    <form name="siteForm" novalidate>
+      <input type="hidden" name="id" ng-model="site.id">
+      <div class="form-group">
+        <label>Category</label>
+        <select class="form-control"
+         ng-model="site.Category"
+				 ng-model-options="{ trackBy: '$value.id' }"
+         ng-options="category.CategoryName for category in categories track by category.id">
+          <option value="">-- choose --</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" required name="SiteName" ng-model="site.SiteName">
+      </div>
+      <div class="form-group">
+        <label>Link</label>
+        <input type="url" class="form-control" required name="SiteUrl" ng-model="site.SiteUrl">
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control"  name="Description" ng-model="site.Description">
+        </textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Logo</label>
+        <div class="input-group">
+          <span class="input-group-addon"><img height="20" ng-src="{{site.image.url()}}"></span>
+          <input type="text" class="form-control" ng-model="imageOneFilename" disabled>
+          <span class="input-group-btn">
+              <button class="btn btn-default" name="image" ng-model="site.image" ng-class="{ 'photo-active': site.image.url() }"
+            ngf-select="uploadImageOne($file)" ngf-max-size="2MB" ngf-pattern="'image/*'" accept="image/*"> Browse Images</button>
+          </span>
+        </div><!-- /input-group -->
+
+				<p ng-if="isImageOneUploading">Uploading...</p>
+
+      </div>
+
+      <div class="form-group">
+
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="isFeature"
+              ng-model="site.isFeature">
+             Hot Apps
+            </label>
+          </div>
+
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="isHomepage"
+              ng-model="site.isHomepage" >
+             Show in Home Page Categories
+            </label>
+          </div>
+
+      <div class="form-group">
+        <button type="button"  ng-click="onSaveSite(siteForm.$valid)" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

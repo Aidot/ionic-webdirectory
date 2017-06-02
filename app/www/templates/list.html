@@ -1,0 +1,19 @@
+<ion-view cache-view="false">
+  <ion-nav-title>
+    {{category.CategoryName}}
+  </ion-nav-title>
+  <ion-content class="has-header">
+		<ion-refresher
+	    pulling-text="Pull to refresh..."
+	    on-refresh="doRefresh()">
+	  </ion-refresher>
+    <ion-list>
+      <a class="item item-avatar" ng-repeat="site in sites">
+        <img ng-src="{{site.image.url()}}" ng-click="oLink(site.SiteUrl)">
+        <h2 ng-click="oLink(site.SiteUrl)">{{site.SiteName}}</h2>
+        <p>{{site.Description}}</p>
+      </a>
+    </ion-list>
+  </ion-content>
+
+</ion-view>

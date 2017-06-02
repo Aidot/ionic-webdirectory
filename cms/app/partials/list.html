@@ -1,0 +1,52 @@
+<div class="center-block" style="margin: 16px 10%">
+
+<div class="col-md-12">
+  <h3>Apps</h3>
+  <div class="row">
+    <div class="col-md-4">
+		  <input type="text" class="input-sm form-control" placeholder="Search..." ng-model="query.filter"
+		  ng-model-options="{ debounce: 1000 }" ng-change="onSearch()">
+    </div>
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+      <a href="#/list-add" class="pull-right btn btn-primary btn-sm">
+        <i class="fa fa-plus-circle"></i> Add New
+      </a>
+    </div>
+  </div>
+  <hr>
+  <table class="table table-striped table-hover ">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Category</th>
+        <th>Link</th>
+        <th width="130">Manage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="site in sites">
+        <td>{{site.Category.get('CategoryName')}}</td>
+        <td>{{site.SiteName}}</td>
+        <td>{{site.SiteUrl}}</td>
+
+        <td>
+          <a class="btn btn-default btn-xs" href="#/list/{{site.id}}">
+            <i class="fa fa-pencil-square-o"></i> Edit
+          </a>
+
+          <button class="btn btn-default btn-xs" ng-click="onDestroyCategory($event, category)">
+            <i class="fa fa-trash-o"></i> Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <uib-pagination
+  items-per-page="query.limit" total-items="query.total" ng-model="bigCurrentPage"
+  max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false"
+  num-pages="numPages" ng-change="pageChanged(bigCurrentPage, query.limit)">
+  </uib-pagination>
+</div>
+</div>
